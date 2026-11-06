@@ -11,6 +11,7 @@ class TestEmotionDetector(unittest.TestCase):
 
     @patch("EmotionDetection.emotion_detection.requests.post")
     def test_joy(self, mock_post):
+        """Test detection of joy emotion."""
         mock_post.return_value = Mock(
             status_code=200,
             json=lambda: {"emotionPredictions": [{"emotion": {
@@ -27,6 +28,7 @@ class TestEmotionDetector(unittest.TestCase):
 
     @patch("EmotionDetection.emotion_detection.requests.post")
     def test_anger(self, mock_post):
+        """Test detection of anger emotion."""
         mock_post.return_value = Mock(
             status_code=200,
             json=lambda: {"emotionPredictions": [{"emotion": {
@@ -41,6 +43,7 @@ class TestEmotionDetector(unittest.TestCase):
 
     @patch("EmotionDetection.emotion_detection.requests.post")
     def test_disgust(self, mock_post):
+        """Test detection of disgust emotion."""
         mock_post.return_value = Mock(
             status_code=200,
             json=lambda: {"emotionPredictions": [{"emotion": {
@@ -57,6 +60,7 @@ class TestEmotionDetector(unittest.TestCase):
 
     @patch("EmotionDetection.emotion_detection.requests.post")
     def test_sadness(self, mock_post):
+        """Test detection of sadness emotion."""
         mock_post.return_value = Mock(
             status_code=200,
             json=lambda: {"emotionPredictions": [{"emotion": {
@@ -71,6 +75,7 @@ class TestEmotionDetector(unittest.TestCase):
 
     @patch("EmotionDetection.emotion_detection.requests.post")
     def test_fear(self, mock_post):
+        """Test detection of fear emotion."""
         mock_post.return_value = Mock(
             status_code=200,
             json=lambda: {"emotionPredictions": [{"emotion": {
@@ -87,6 +92,7 @@ class TestEmotionDetector(unittest.TestCase):
 
     @patch("EmotionDetection.emotion_detection.requests.post")
     def test_http_400_returns_none_values(self, mock_post):
+        """Test that HTTP 400 responses return None for all emotion values."""
         mock_post.return_value = Mock(status_code=400)
         result = emotion_detector("A non-empty request that the service rejects")
         self.assertIsNone(result["dominant_emotion"])
